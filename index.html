@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-healthy system</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+
+    <!-- header navbar section start  -->
+
+    <header>
+
+        <!-- logo name  -->
+        <a href="#" class="logo">E-healthy system.</a>
+
+        <!-- navbar link  -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">home</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#Book-apointment">Book appointment</a></li>
+                <!-- <li><a href="#review">review</a></li> -->
+                <!-- <li><a href="#contact">contact</a></li> -->
+                <!-- <li><a href="#blog">blog</a></li> -->
+            </ul>
+        </nav>
+
+         <!-- <div class="fas fa-bars"></div> -->
+    </header>
+    <!-- header navbar section end  --> 
+
+    <!-- home section start  -->
+
+    <section id="home" class="home">
+
+        <div class="row">
+
+            <!-- home images  -->
+            
+            <div class="images">
+                <img src="./images/main-image.png" alt="" width="600" height="450" class="center">
+            </div>
+            
+            <!-- home heading  -->
+            <!--  
+            <div class="content">
+                <h1><span>Stay</span> Safe, <span>Stay</span> Healthy.</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, officiis.</p>
+                <a href="#"><button class="button">read more</button></a>
+            </div>
+             -->
+        </div>
+    </section>
+    <!-- home section end  -->
+
+    <!-- about section start  -->
+
+    <section id="about" class="about">
+
+        <h1 class="heading">About our facility</h1>
+        <!--<h3 class="title">learn and explore our facility</h3> -->
+
+        <div class="box-container">
+
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <!--
+                <div class="images">
+                    <img src="./images/about-1.png" alt="">
+                </div>
+                 -->
+                
+                <!-- about heading & text  -->
+                
+                <div class="content">
+                    <h3>Who are we?</h3>
+                    <p>We are a highly specialised team, our goal is provide patients the best service. High percentage of appointments in few time.</p>
+                 <a href="#"><button class="button">learn more</button></a>   
+                </div>
+
+                <div class="content">
+                    <h3>Services</h3>
+                    <p>Prevention, diagnosis, therapy, rehabilitation and promotion of health are some of the available services we provide.</p>
+                 <a href="#"><button class="button">learn more</button></a>   
+                </div>
+                
+            </div>
+            <!-- end here  -->
+
+            
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <!-- 
+                <div class="images">
+                    <img src="./images/about-2.png" alt="">
+                </div>
+                -->
+                
+                <!-- about heading & text  -->
+                <!--
+                <div class="content">
+                    <h3>emergency rooms</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab necessitatibus omnis unde dolore suscipit magnam officia. Maxime explicabo qui distinctio?</p>
+                 <a href="#"><button class="button">learn more</button></a>   
+                </div>
+                -->
+            </div>
+            <!-- end here  -->
+
+            
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <!--
+                <div class="images">
+                    <img src="./images/about-3.png" alt="">
+                </div>
+                -->
+                
+                <!-- about heading & text  -->
+                <!--
+                <div class="content">
+                    <h3>free check-ups</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab necessitatibus omnis unde dolore suscipit magnam officia. Maxime explicabo qui distinctio?</p>
+                 <a href="#"><button class="button">learn more</button></a>   
+                </div>
+                -->
+            </div>
+            <!-- end here  -->
+           </div>
+    </section>
+
+    <!-- about section end  -->
+    
+    <!-- card section start  -->
+
+    <section id="Book-apointment" class="Book-apointment">
+
+        <div class="container">
+
+            <h1 class="heading">Book Your appointment</h1>
+            <h3 class="title">Logging</h3>
+
+            <!-- <div class="box-container"> -->
+
+                <!-- start here  -->
+                <!-- <div class="box"> -->
+                    <!-- <h1>Book Your Appointment</h1> -->
+                    <form id="appointment-form">
+                
+                      <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="time">Time:</label>
+                        <input type="time" id="time" name="time" required>
+                      </div>
+                      <div class="dropdown">
+                        <label for="specialty">Choose the specialty</label>
+                        <select name="specialty" id="specialty">
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Family Medicine">Family Medicine</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Obstetric">Obstetric</option>
+                            <option value="Ophthalmologist">Ophthalmologist</option>
+                            <option value="Otolaryngology">Otolaryngology</option>
+
+
+                        </select>
+                      </div>
+                      <button type="submit">Book Appointment</button>
+                    </form>
+                    <div id="message"></div>
+                    
+                <!-- </div> -->
+                <!-- end here  -->
+
+                
+            
+
+            <!--</div> -->
+        </div>
+    </section>
+    <!-- card section end  -->
+
+  
+ 
+    
+
+  
+
+    <!-- footer section start  -->
+    <!--
+    <section class="footer">
+
+        
+        <div class="box">
+            <h2 class="logo"><span>S</span>hare</h2>
+
+            <a href="#">facebook</a>
+            <a href="#">twitter</a>
+            <a href="#">instagram</a>
+            <a href="#">pinterest</a>
+        </div>
+        
+
+        <div class="box">
+            <h2 class="logo"><span>L</span>inks</h2>
+
+            <a href="#">home</a>
+            <a href="#">about</a>
+            <a href="#">Doctor</a>
+            <a href="#">Book-apointment</a>
+           
+          
+          
+        </div>
+
+        
+        <h1 class="credit">created by <span>Website. Masters</span> all right reserved.</h1>
+         
+    </section> -->
+
+
+
+
+
+
+
+
+    <!-- footer section end  -->
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <!-- jquery cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
