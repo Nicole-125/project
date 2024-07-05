@@ -1,0 +1,27 @@
+steps:
+  # Construcción de la imagen de contenedor
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/mercurial-cairn-425611-g0/helloworld', '.']
+  
+  # Subida de la imagen de contenedor a Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/mercurial-cairn-425611-g0/helloworld']
+  
+  # Despliegue de la imagen de contenedor en Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'runwithcicd', '--image', 'gcr.io/mercurial-cairn-425611-g0/helloworld', '--region', 'europe-southwest1', '--allow-unauthenticated']
+  
+# Especifica las imágenes que serán producidas por esta build
+images:
+  - gcr.io/mercurial-cairn-425611-g0/helloworld
+
+
+#steps:
+#  - name: 'gcr.io/cloud-builders/docker'
+#    args: ['build', '-t', 'gcr.io/mercurial-cairn-425611-g0/helloworld', '.']
+#  - name: 'gcr.io/cloud-builders/docker'
+#    args: ['push', 'gcr.io/mercurial-cairn-425611-g0/helloworld']
+#images:
+#  - 'gcr.io/mercurial-cairn-425611-g0/helloworld'
+
