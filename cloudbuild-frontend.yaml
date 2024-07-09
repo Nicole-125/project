@@ -1,0 +1,47 @@
+
+steps:
+  # Construcción de la imagen de contenedor
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - gcr.io/mercurial-cairn-425611-g0/frontend
+      - .
+   # Subida de la imagen de contenedor a Artifact Registry    
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - gcr.io/mercurial-cairn-425611-g0/frontend
+  # Despliegue de la imagen de contenedor en Cloud Run    
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - run
+      - deploy
+      - runwithcicd2
+      - '--image'
+      - gcr.io/mercurial-cairn-425611-g0/frontend
+      - '--region'
+      - europe-southwest1
+      - '--allow-unauthenticated'
+      - '--service-account'
+      - 364450875361-compute@developer.gserviceaccount.com
+    entrypoint: gcloud
+  # Permiso para acceder a la url  
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - run
+      - services
+      - add-iam-policy-binding
+      - runwithcicd2
+      - '--region'
+      - europe-southwest1
+      - '--member'
+      - allUsers
+      - '--role'
+      - roles/run.invoker
+    entrypoint: gcloud
+# Especifica las imágenes que serán producidas por esta build    
+images:
+  - gcr.io/mercurial-cairn-425611-g0/frontend
+options:
+  logging: CLOUD_LOGGING_ONLY
