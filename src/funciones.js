@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (boton) {
         // Agregar un listener para el evento 'click'
         boton.addEventListener('click', function() {
-            //alert('REDIRECCIONA AL LOGGING');
+            alert('REDIRECCIONA AL LOGGING');
             // Aquí puedes agregar más funcionalidad que desees
             // Redireccionar a loggin.html
             window.location.href = './loggin.html';
