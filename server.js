@@ -2,6 +2,10 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+// Servir archivos estáticos desde las carpetas 'src' e 'images'
+server.use('/src', express.static(path.join(__dirname, 'src')));
+server.use('/images', express.static(path.join(__dirname, 'images')));
+
 const server = http.createServer((req, res) => {
     // Ruta al archivo index.html
     const filePath = path.join(__dirname, 'index.html');
