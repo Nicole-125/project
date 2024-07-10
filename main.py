@@ -7,9 +7,9 @@ app = Flask(__name__)
 # Configura tu cliente de BigQuery
 client = bigquery.Client()
 
-PROJECT_ID = mercurial-cairn-425611-g0
-DATASET_ID = clinica
-TABLE_ID = Usuarios
+PROJECT_ID = 'mercurial-cairn-425611-g0'
+DATASET_ID = 'clinica'
+TABLE_ID = 'Usuarios'
 
 
 @app.route('/login', methods=['POST'])
