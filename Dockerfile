@@ -20,4 +20,5 @@ COPY . .
 CMD [ "node", "server.js" ]
 
 # Document that the service listens on port 8081.
-EXPOSE 8081
+EXPOSE 8080
+
