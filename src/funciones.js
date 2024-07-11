@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const goButtonLoggin = document.getElementById('Enter');
 
     goButtonLoggin.addEventListener('click', async () => {
+        alert('Validando usuario');
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const backendUrl = 'https://backend-s6yorswraa-no.a.run.app/login';
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
 
-            console.log('Respuesta del servidor:', result);  // Añado esta línea para depuración
+            console.log('Respuesta del servidor:', result);  // Añado esta línea para depurar
 
             if (response.success) {
                 // Procesar respuesta exitosa
