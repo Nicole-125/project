@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     goButtonLoggin.addEventListener('click', async () => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
+        const backendUrl = 'https://backend-s6yorswraa-no.a.run.app/login';
 
         const loginData = {
             email: email,
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('URL_BACKEND', {
+            const response = await fetch(backendUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
