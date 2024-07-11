@@ -3,6 +3,8 @@ from google.cloud import bigquery, error_reporting
 # para permitir solucitudes
 from flask_cors import CORS 
 import os
+import logging
+
 
 app = Flask(__name__)
 CORS(app)  # Permite todas las solicitudes CORS desde cualquier dominio
@@ -14,6 +16,9 @@ client = bigquery.Client()
 # Inicializa el cliente de Error Reporting
 error_client = error_reporting.Client()
 
+# Configura el nivel de logs para capturar errores críticos
+logging.basicConfig(level=logging.ERROR)
+
 PROJECT_ID = 'mercurial-cairn-425611-g0'
 DATASET_ID = 'clinica'
 TABLE_ID = 'Usuarios'
@@ -22,6 +27,7 @@ print("Paràmetros de la conexiòn con la base establecida" + TABLE_ID)
 
 @app.route('/login', methods=['POST'])
 def post_login():
+
     print("Inicia la llamada a la funciòn Login()")
     data = request.get_json()
     #print("Datos recibidos:"+data)  # Añade esta línea
@@ -75,9 +81,16 @@ def post_login():
             'message': 'Credenciales incorrectas'
         }), 400
 
+        
+        logging.error("Se produjo un error: Detalles adicionales si es necesario")
+        return jsonify({'error': 'Error proporcionado por logging'}), 401
+
 
     except Exception as e:
         print(f"Error en la consulta de BigQuery: {e}")
+        logging.error(f"Ocurrió un error: {e}")
+        # También puedes registrar la traza completa del error
+        logging.exception("Detalles completos del error:")
         error_client.report_exception()
         return jsonify({'error': 'Error interno del servidor'}), 500
 
