@@ -56,4 +56,5 @@ def login():
 if __name__ == '__main__':
     # Establece la variable de entorno GOOGLE_APPLICATION_CREDENTIALS para la autenticación
     # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ruta/a/tu/credencial.json"
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(host='0.0.0.0', port=8080)
