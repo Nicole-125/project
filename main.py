@@ -32,9 +32,9 @@ def post_login():
     if not email or not password:
         return jsonify({'error': 'Faltan campos de email o password'}), 400
 
-    query = """
+    query = f"""
         SELECT email, password
-        FROM '{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}'
+        FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
         WHERE email = @email
     """
     job_config = bigquery.QueryJobConfig(
@@ -46,7 +46,7 @@ def post_login():
 
     try:
         print("Se intenta realizar el query")
-        query_job = client.query(query, job_config=job_config)
+        query_job = client.query(query)
         results = query_job.result()
         
         if results is None:
