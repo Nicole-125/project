@@ -45,9 +45,17 @@ def login():
 
         # Compara la contraseña
         if user.password == password:
-            return jsonify({'message': 'Login exitoso'}), 200
+            return jsonify({
+            'success': True,
+            'message': 'Login exitoso',
+            'user': {'username': username} 
+            })
         else:
-            return jsonify({'error': 'Contraseña incorrecta'}), 401
+            return jsonify({
+            'success': False,
+            'message': 'Credenciales incorrectas'
+        }), 400
+
 
     except Exception as e:
         print(f"Error en la consulta de BigQuery: {e}")
