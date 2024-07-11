@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const backendUrl = 'https://backend-s6yorswraa-no.a.run.app/login';
+        const errorMessage = document.getElementById('error-message');
+
 
         const loginData = {
             email: email,
@@ -59,14 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
 
-            if (response.ok) {
+            if (response.success) {
                 // Procesar respuesta exitosa
                 console.log('Login exitoso:', result);
                 // Redirigir o mostrar mensaje al usuario
+                window.location.href = 'patient-platform.html';
             } else {
                 // Procesar error
                 console.error('Error en el login:', result);
                 // Mostrar mensaje de error al usuario
+                errorMessage.textContent = 'Credenciales incorrectas. Por favor, inténtalo de nuevo.';
             }
         } catch (error) {
             console.error('Error de conexión:', error);
