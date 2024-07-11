@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.ERROR)
 PROJECT_ID = 'mercurial-cairn-425611-g0'
 DATASET_ID = 'clinica'
 TABLE_ID = 'Usuarios'
-print("Paràmetros de la conexiòn con la base establecida" + TABLE_ID)
+print("Parámetros de la conexión con la base establecida " + TABLE_ID)
 
 
 @app.route('/login', methods=['POST'])
@@ -33,6 +33,7 @@ def post_login():
     #print("Datos recibidos:"+data)  # Añade esta línea
     email_value = data.get('email')
     password = data.get('password')
+    print("ESTO DEBE FUNCIONAR")
     print("Datos recibidos: email: "+email_value +" & pass: " + password)
 
     if not email_value or not password:
@@ -59,11 +60,8 @@ def post_login():
             print("Se obtuvieron resultados del query" + results)
         else:
             print("No se obtuvieron resultados del query")
-            row_iterator = RowIterator(results)
-            # Iterando y mostrando cada fila
-            for row in row_iterator:
-                print("Datos")
-                print(row)
+            print(results)
+
             
 
 
