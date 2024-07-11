@@ -41,7 +41,7 @@ def post_login():
     query = f"""
         SELECT Email, Password
         FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
-        WHERE Email = '{email_value}'
+        WHERE Email = email_value
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
@@ -58,7 +58,13 @@ def post_login():
         if results is None:
             print("Se obtuvieron resultados del query" + results)
         else:
-            print("No se obtuvieron resultados del query" + results)
+            print("No se obtuvieron resultados del query")
+            row_iterator = RowIterator(results)
+            # Iterando y mostrando cada fila
+            for row in row_iterator:
+                print("Datos")
+                print(row)
+            
 
 
         rows = [row for row in results]
