@@ -14,15 +14,17 @@ client = bigquery.Client()
 PROJECT_ID = 'mercurial-cairn-425611-g0'
 DATASET_ID = 'clinica'
 TABLE_ID = 'Usuarios'
-print("hola")
+print("Paràmetros de la conexiòn con la base establecida" + TABLE_ID)
 
 
 @app.route('/login', methods=['POST'])
 def login():
+    print("Inicia la llamada a la funciòn Login()")
     data = request.get_json()
-    print(f"Datos recibidos: {data}")  # Añade esta línea
+    #print("Datos recibidos:"+data)  # Añade esta línea
     email = data.get('email')
     password = data.get('password')
+    print("Datos recibidos: email: "+email +" & pass: " + password)
 
     if not email or not password:
         return jsonify({'error': 'Faltan campos de email o password'}), 400
@@ -37,10 +39,18 @@ def login():
             bigquery.ScalarQueryParameter("email", "STRING", email)
         ]
     )
+    print("Query definido")
 
     try:
+        print("Se intenta realizar el query")
         query_job = client.query(query, job_config=job_config)
         results = query_job.result()
+        
+        if results is None:
+            print("Se obtuvieron resultados del query" + results)
+        else:
+            print("No se obtuvieron resultados del query" + results)
+
 
         rows = [row for row in results]
 
