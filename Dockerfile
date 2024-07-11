@@ -6,6 +6,7 @@ FROM python:3.8
 RUN pip install google-cloud-bigquery Flask
 RUN pip install flask-cors
 RUN pip install google-cloud-error-reporting
+RUN pip install logging
 
 # Copy local code to the container image.
 ENV APP_HOME /app
