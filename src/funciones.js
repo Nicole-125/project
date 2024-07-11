@@ -76,8 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorMessage.textContent = 'Credenciales incorrectas. Por favor, inténtalo de nuevo.';
             }
         } catch (error) {
-            console.error('Error de conexión:', error);
+            //console.error('Error de conexión:', error);
             // Mostrar mensaje de error al usuario
+            JSON.stringify(error);
         }
     });
 });
