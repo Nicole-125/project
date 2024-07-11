@@ -45,7 +45,7 @@ def post_login():
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
-            bigquery.ScalarQueryParameter("email", "STRING", email)
+            bigquery.ScalarQueryParameter("email", "STRING", email_value)
         ]
     )
     print("Query definido")
@@ -99,7 +99,7 @@ def post_login():
 @app.errorhandler(Exception)
 def handle_exception(e):
     error_client.report_exception()  # Reporta la excepción a Error Reporting
-    return jsonify({'error': 'Error interno, Manejador de errores global: ' + e}), 500
+    return jsonify({'error': 'Error interno, Manejador de errores global: ' }), 500
 
 
 if __name__ == '__main__':
