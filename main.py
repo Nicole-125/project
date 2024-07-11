@@ -19,6 +19,7 @@ TABLE_ID = 'Usuarios'
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
+    print(f"Datos recibidos: {data}")  # Añade esta línea
     email = data.get('email')
     password = data.get('password')
 
