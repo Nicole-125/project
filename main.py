@@ -31,17 +31,17 @@ def post_login():
     print("Inicia la llamada a la funciòn Login()")
     data = request.get_json()
     #print("Datos recibidos:"+data)  # Añade esta línea
-    email = data.get('email')
+    email_value = data.get('email')
     password = data.get('password')
-    print("Datos recibidos: email: "+email +" & pass: " + password)
+    print("Datos recibidos: email: "+email_value +" & pass: " + password)
 
-    if not email or not password:
+    if not email_value or not password:
         return jsonify({'error': 'Faltan campos de email o password'}), 400
 
     query = f"""
         SELECT Email, Password
         FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
-        WHERE Email = `{email}`
+        WHERE Email = '{email_value}'
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
