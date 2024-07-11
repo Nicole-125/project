@@ -1,8 +1,12 @@
 from flask import Flask, request, jsonify
 from google.cloud import bigquery
+# para permitir solucitudes
+from flask_cors import CORS 
 import os
 
 app = Flask(__name__)
+CORS(app)  # Permite todas las solicitudes CORS desde cualquier dominio
+
 
 # Configura tu cliente de BigQuery
 client = bigquery.Client()
