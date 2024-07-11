@@ -17,8 +17,8 @@ TABLE_ID = 'Usuarios'
 print("Paràmetros de la conexiòn con la base establecida" + TABLE_ID)
 
 
-@app.route('/login', methods=['POST'])
-def login():
+@app.route('/login')
+def post_login():
     print("Inicia la llamada a la funciòn Login()")
     data = request.get_json()
     #print("Datos recibidos:"+data)  # Añade esta línea
