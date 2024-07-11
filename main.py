@@ -39,9 +39,9 @@ def post_login():
         return jsonify({'error': 'Faltan campos de email o password'}), 400
 
     query = f"""
-        SELECT email, password
+        SELECT Email, Password
         FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
-        WHERE email = @email
+        WHERE Email = @email
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
