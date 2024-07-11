@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from google.cloud import bigquery
+from google.cloud import bigquery, error_reporting
 # para permitir solucitudes
 from flask_cors import CORS 
 import os
@@ -10,6 +10,9 @@ CORS(app)  # Permite todas las solicitudes CORS desde cualquier dominio
 
 # Configura tu cliente de BigQuery
 client = bigquery.Client()
+
+# Inicializa el cliente de Error Reporting
+error_client = error_reporting.Client()
 
 PROJECT_ID = 'mercurial-cairn-425611-g0'
 DATASET_ID = 'clinica'
@@ -75,7 +78,16 @@ def post_login():
 
     except Exception as e:
         print(f"Error en la consulta de BigQuery: {e}")
+        error_client.report_exception()
         return jsonify({'error': 'Error interno del servidor'}), 500
+
+
+# Manejador de errores global
+@app.errorhandler(Exception)
+def handle_exception(e):
+    error_client.report_exception()  # Reporta la excepción a Error Reporting
+    return jsonify({'error': 'Error interno, Manejador de errores global: ' + e}), 500
+
 
 if __name__ == '__main__':
     # Establece la variable de entorno GOOGLE_APPLICATION_CREDENTIALS para la autenticación
