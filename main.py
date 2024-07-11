@@ -14,6 +14,7 @@ client = bigquery.Client()
 PROJECT_ID = 'mercurial-cairn-425611-g0'
 DATASET_ID = 'clinica'
 TABLE_ID = 'Usuarios'
+print("hola")
 
 
 @app.route('/login', methods=['POST'])
