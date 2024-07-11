@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
 
+            console.log('Respuesta del servidor:', result);  // Añado esta línea para depuración
+
             if (response.success) {
                 // Procesar respuesta exitosa
                 console.log('Login exitoso:', result);
