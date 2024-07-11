@@ -41,7 +41,7 @@ def post_login():
     query = f"""
         SELECT Email, Password
         FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
-        WHERE Email = email_value
+        WHERE Email = '{email_value}'
     """
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
