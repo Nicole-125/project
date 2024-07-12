@@ -72,6 +72,10 @@ def post_login():
 
         user = rows[0]
 
+        print('A ver la pssword real: ' + user.password)
+        print('A ver la pssword pasada: ' + password)
+
+
         # Compara la contraseña
         if user.password == password:
             return jsonify({
