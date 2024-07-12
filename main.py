@@ -34,7 +34,7 @@ def post_login():
     email_value = data.get('email')
     password = data.get('password')
     print("ESTO DEBE FUNCIONAR")
-    print("Datos recibidos: email: "+email_value +" & pass: " + password)
+    print("Datos recibidos: email: " + email_value)
 
     if not email_value or not password:
         return jsonify({'error': 'Faltan campos de email o password'}), 400
@@ -72,8 +72,20 @@ def post_login():
 
         user = rows[0]
 
-        print('A ver la pssword real: ' + user.password)
-        print('A ver la pssword pasada: ' + password)
+     
+
+        try:
+            # Suponiendo que user es un objeto que tiene un atributo password
+            print('A ver la password real: ' + user.password)
+        except AttributeError as e:
+            print(f'No se encontró el campo password en el objeto user: {e}')
+
+        try:
+            # Suponiendo que user es un objeto que tiene un atributo password
+            print('A ver la password recibida: ' + password)
+        except AttributeError as e:
+            print(f'No se encontró el campo password recibido: {e}')    
+
 
 
         # Compara la contraseña
