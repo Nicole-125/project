@@ -89,12 +89,14 @@ def post_login():
 
 
         # Compara la contraseña
-        if user.password == password:
+        if user.password == user.password:
             return jsonify({
             'success': True,
             'message': 'Login exitoso',
             'user': {'username': username} 
             })
+            print('vemos value')
+            print(user.password)
         else:
             return jsonify({
             'success': False,
