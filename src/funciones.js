@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             password: password
         };
 
+        // Imprimir el objeto loginData en la consola para ver cómo se enviará
+        console.log("Datos que se envian al servidor:", loginData);
+
         try {
             const response = await fetch(backendUrl, {
                 method: 'POST',
