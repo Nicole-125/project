@@ -67,6 +67,10 @@ def post_login():
 
         rows = [row for row in results]
 
+        for row in results:
+            print('Dato')
+            print(row)
+
         #if len(rows) == 0:
         #    return jsonify({'error': 'Usuario no encontrado'}), 401
 
@@ -89,7 +93,7 @@ def post_login():
 
 
         # Compara la contraseña
-        if user.password == user.password:
+        if password == password:
             return jsonify({
             'success': True,
             'message': 'Login exitoso',
