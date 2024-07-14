@@ -76,6 +76,10 @@ def post_login():
 
         user = rows[0]
 
+        logging.debug("A ver la password real de la Query", user['Password'])
+        logging.debug("A ver la password real de la Query", user.password)
+
+
      
 
         try:
