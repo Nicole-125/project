@@ -1,11 +1,3 @@
-import * as Sentry from "@sentry/browser";
-
-//Sentry.init({ 
-//    dsn: "https://<your-dsn>@sentry.io/mercurial-cairn-425611-g0",
-//    integrations: [new Sentry.Integrations.Breadcrumbs({ console: false })],
-//});
-
-
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener el elemento del botón por su ID
     var boton = document.getElementById('botoncito3');
