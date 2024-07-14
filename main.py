@@ -17,7 +17,8 @@ client = bigquery.Client()
 error_client = error_reporting.Client()
 
 # Configura el nivel de logs para capturar errores críticos
-logging.basicConfig(level=logging.ERROR)
+#logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.DEBUG)
 
 PROJECT_ID = 'mercurial-cairn-425611-g0'
 DATASET_ID = 'clinica'
@@ -77,7 +78,7 @@ def post_login():
         user = rows[0]
 
         logging.debug("A ver la password real de la Query", user['Password'])
-        logging.debug("A ver la password real de la Query", user.password)
+        #logging.debug("A ver la password real de la Query", user.password)
 
 
      
