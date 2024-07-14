@@ -78,10 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(loginData)
             });
 
+            console.log('Enviando datos y esperando respuesta');  
+
             // Verificar el estado de la respuesta
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
+            //if (!response.ok) {
+            //    throw new Error(`HTTP error! Status: ${response.status}`);
+            //}
 
             const result = await response.json();
 
