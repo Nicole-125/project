@@ -105,10 +105,11 @@ def post_login():
             })
             print('vemos value')
             print(user.password)
-        else:
+            
+        elif user['Password'] != password:
             return jsonify({
             'success': False,
-            'message': 'Credenciales incorrectas'
+            'message': 'Credenciales no correctas'
         }), 400
 
         
