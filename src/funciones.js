@@ -1,9 +1,9 @@
 import * as Sentry from "@sentry/browser";
 
-Sentry.init({ 
-    dsn: "https://<your-dsn>@sentry.io/mercurial-cairn-425611-g0",
-    integrations: [new Sentry.Integrations.Breadcrumbs({ console: false })],
-});
+//Sentry.init({ 
+//    dsn: "https://<your-dsn>@sentry.io/mercurial-cairn-425611-g0",
+//    integrations: [new Sentry.Integrations.Breadcrumbs({ console: false })],
+//});
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -54,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const backendUrl = 'https://backend-s6yorswraa-no.a.run.app/login';
         const errorMessage = document.getElementById('error-message');
 
+        console.log("D1",email);
+        console.log("D2",password);
+        
+
 
         const loginData = {
             email: email,
@@ -67,8 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Código que puede lanzar un error
             console.log("Datos que se envian al servidor:", loginData);
         } catch (error) {
-            Sentry.captureException(error);
+            //Sentry.captureException(error);
             console.error("Error capturado hoy:", error);
+            JSON.stringify(error);
         }
         
 
@@ -107,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             JSON.stringify(error);
 
             // Capturar y registrar errores con Sentry
-            Sentry.captureException(error);
+            //Sentry.captureException(error);
         }
     });
 });
