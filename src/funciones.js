@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-            if (result.success==True) {
+            if (result.success == true) {
                 // Procesar respuesta exitosa
                 console.log('Login exitoso:', result);
                 // Redirigir o mostrar mensaje al usuario
