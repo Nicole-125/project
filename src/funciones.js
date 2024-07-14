@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Código que puede lanzar un error
-            console.log("Datos que se envian al servidor:", loginData);
+            console.log("Estos datos se envian al servidor:", loginData);
         } catch (error) {
             //Sentry.captureException(error);
             console.error("Error capturado hoy:", error);
@@ -85,7 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
 
-            console.log('Respuesta del servidor:', result);  // Añado esta línea para depurar
+            try {
+                // Código que puede lanzar un error
+                console.log('Respuesta del servidor:', result);  // Añado esta línea para depurar
+            } catch (error) {
+                console.error("Error capturado hoy:", error);
+                JSON.stringify(error);
+        }
+
 
             if (response.success) {
                 // Procesar respuesta exitosa
