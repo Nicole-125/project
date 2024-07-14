@@ -96,8 +96,7 @@ def post_login():
         if password == password:
             return jsonify({
             'success': True,
-            'message': 'Login exitoso',
-            'user': {'username': username} 
+            'message': 'Login exitoso'
             })
             print('vemos value')
             print(user.password)
