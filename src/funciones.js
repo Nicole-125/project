@@ -88,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 // Código que puede lanzar un error
                 console.log('Respuesta del servidor:', result);  // Añado esta línea para depurar
+                console.log('result.success:', result.success);  // Añado esta línea para depurar
+
             } catch (error) {
                 console.error("Error capturado hoy:", error);
                 JSON.stringify(error);
