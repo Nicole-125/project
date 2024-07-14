@@ -1,3 +1,11 @@
+import * as Sentry from "@sentry/browser";
+
+Sentry.init({ 
+    dsn: "https://<your-dsn>@sentry.io/mercurial-cairn-425611-g0",
+    integrations: [new Sentry.Integrations.Breadcrumbs({ console: false })],
+});
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener el elemento del botón por su ID
     var boton = document.getElementById('botoncito3');
@@ -35,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const goButtonLoggin = document.getElementById('Enter');
 
@@ -55,6 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Datos que se envian al servidor:", loginData);
 
         try {
+            // Código que puede lanzar un error
+            console.log("Datos que se envian al servidor:", loginData);
+        } catch (error) {
+            Sentry.captureException(error);
+            console.error("Error capturado hoy:", error);
+        }
+        
+
+        try {
             const response = await fetch(backendUrl, {
                 method: 'POST',
                 headers: {
@@ -62,6 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(loginData)
             });
+
+            // Verificar el estado de la respuesta
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
 
             const result = await response.json();
 
@@ -82,6 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
             //console.error('Error de conexión:', error);
             // Mostrar mensaje de error al usuario
             JSON.stringify(error);
+
+            // Capturar y registrar errores con Sentry
+            Sentry.captureException(error);
         }
     });
 });

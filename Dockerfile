@@ -11,6 +11,7 @@ COPY package*.json ./
 
 # Install production dependencies.
 RUN npm install --only=production
+RUN pip install google-cloud-error-reporting
 
 # Copy local code to the container image.
 COPY . .
