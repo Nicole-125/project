@@ -67,8 +67,8 @@ def post_login():
 
         rows = [row for row in results]
 
-        for row in results:
-            print('Dato')
+        for row in rows:
+            print('Dato de backend')
             print(row)
 
         #if len(rows) == 0:
