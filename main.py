@@ -34,8 +34,8 @@ def post_login():
     #print("Datos recibidos:"+data)  # Añade esta línea
     email_value = data.get('email')
     password = data.get('password')
-    print("ESTO DEBE FUNCIONAR")
-    print("Datos recibidos: email: " + email_value)
+    #print("ESTO DEBE FUNCIONAR")
+    #print("Datos recibidos: email: " + email_value)
 
     if not email_value or not password:
         return jsonify({'error': 'Faltan campos de email o password'}), 400
@@ -45,12 +45,13 @@ def post_login():
         FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
         WHERE Email = '{email_value}'
     """
-    job_config = bigquery.QueryJobConfig(
-        query_parameters=[
-            bigquery.ScalarQueryParameter("email", "STRING", email_value)
-        ]
-    )
-    print("Query definido")
+    #job_config = bigquery.QueryJobConfig(
+    #    query_parameters=[
+    #        bigquery.ScalarQueryParameter("email", "STRING", email_value)
+    #    ]
+    #)
+    
+    #print("Query definido")
 
     try:
         print("Se intenta realizar el query")
@@ -58,9 +59,14 @@ def post_login():
         results = query_job.result()
         
         if results is None:
-            print("Se obtuvieron resultados del query" + results)
+            print("No se obtuvieron resultados del query" + results)
+            logging.debug("Usuario no registrado en la BBDD")
+            return jsonify({
+            'success': False,
+            'message': 'Usuario no registrado'
+             })
         else:
-            print("No se obtuvieron resultados del query")
+            print("Se obtuvieron resultados del query")
             print(results)
 
             
@@ -78,7 +84,7 @@ def post_login():
         user = rows[0]
 
         logging.debug("A ver la password real de la Query", user['Password'])
-        #logging.debug("A ver la password real de la Query", user.password)
+        logging.debug("A ver la password recibida", password)
 
 
      
