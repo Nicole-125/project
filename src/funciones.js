@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             
             } 
-            else if (result == undefined){
+            else if (result.success == undefined){
                 errorMessage.textContent = 'Usuario no registrado. Por favor registrese en la BBDD para continuar.';
             } 
             else {
