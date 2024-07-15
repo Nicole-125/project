@@ -103,7 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Login exitoso:', result);
                 // Redirigir o mostrar mensaje al usuario
                 window.location.href = 'patient-platform.html';
-            } else {
+
+            
+            } 
+            else if (result == undefined){
+                errorMessage.textContent = 'Usuario no registrado. Por favor registrese en la BBDD para continuar.';
+            } 
+            else {
                 // Procesar error
                 console.error('Error en el login:', result);
                 // Mostrar mensaje de error al usuario
