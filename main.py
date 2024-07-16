@@ -31,11 +31,9 @@ def post_login():
 
     print("Inicia la llamada a la funciòn Login()")
     data = request.get_json()
-    #print("Datos recibidos:"+data)  # Añade esta línea
     email_value = data.get('email')
     password = data.get('password')
-    #print("ESTO DEBE FUNCIONAR")
-    #print("Datos recibidos: email: " + email_value)
+
 
     if not email_value or not password:
         return jsonify({'error': 'Faltan campos de email o password'}), 400
@@ -45,13 +43,6 @@ def post_login():
         FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
         WHERE Email = '{email_value}'
     """
-    #job_config = bigquery.QueryJobConfig(
-    #    query_parameters=[
-    #        bigquery.ScalarQueryParameter("email", "STRING", email_value)
-    #    ]
-    #)
-    
-    #print("Query definido")
 
     try:
         print("Se intenta realizar el query")
@@ -90,20 +81,20 @@ def post_login():
      
 
         try:
-            # Suponiendo que user es un objeto que tiene un atributo password
-            print('A ver la password real: ' + user.password)
+            # Show password from query
+            print('Password real: ' + user.password)
         except AttributeError as e:
             print(f'No se encontró el campo password en el objeto user: {e}')
 
         try:
-            # Suponiendo que user es un objeto que tiene un atributo password
+            # Show password from frontend
             print('A ver la password recibida: ' + password)
         except AttributeError as e:
             print(f'No se encontró el campo password recibido: {e}')    
 
 
 
-        # Compara la contraseña
+        # Compare passwords
         if user['Password'] == password:
             return jsonify({
             'success': True,
@@ -126,7 +117,7 @@ def post_login():
     except Exception as e:
         print(f"Error en la consulta de BigQuery: {e}")
         logging.error(f"Ocurrió un error: {e}")
-        # También puedes registrar la traza completa del error
+        # Registrar la traza completa del error
         logging.exception("Detalles completos del error:")
         error_client.report_exception()
         return jsonify({'error': 'Error interno del servidor'}), 500
