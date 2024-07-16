@@ -56,11 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
             password: password
         };
 
-        // Imprimir el objeto loginData en la consola para ver cómo se enviará
-        console.log("Datos que se envian al servidor:", loginData);
-
         try {
-            // Código que puede lanzar un error
+            // Imprimir el objeto loginData en la consola para ver cómo se enviará
             console.log("Estos datos se envian al servidor:", loginData);
         } catch (error) {
             //Sentry.captureException(error);
@@ -116,12 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorMessage.textContent = 'Credenciales incorrectas. Por favor, inténtalo de nuevo.';
             }
         } catch (error) {
-            //console.error('Error de conexión:', error);
             // Mostrar mensaje de error al usuario
             JSON.stringify(error);
 
-            // Capturar y registrar errores con Sentry
-            //Sentry.captureException(error);
         }
     });
 });
